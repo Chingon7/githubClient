@@ -1,10 +1,9 @@
 rankall <- function(outcome, num = "best") {
         ## Read outcome data
         dat <- read.csv("outcome-of-care-measures.csv",stringsAsFactors = FALSE)
-        
         ## Check that state and outcome are valid
         
-        if( outcome != "heart attack" && outcome != "heart failure" && outcome != "pneumonia" ){
+        if( outcome != "heart attack" && outcome != "heart failure" && outcome != "pneumonia"){
                 print("invalid outcome")
                 stop()
         }
@@ -27,6 +26,7 @@ rankall <- function(outcome, num = "best") {
       
 
         ## For each state, find the hospital of the given rank
+        ## Data frame is diveded by state
         
         StateList <- split(subData, subData$state)
         result <- lapply(StateList, function (l,num){
